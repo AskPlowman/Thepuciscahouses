@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact & Booking • The Pučišća Houses</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Flatpickr calendar styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <!-- Page-only styles for the house selector + locked state -->
+  <style>
+    /* ===== House selector (top of page) ===== */
+    .bookingPartnersBox{ padding: 18px; }
+
+    .housePicker{
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .houseChoice{
+      border: 1px solid rgba(255,255,255,.12);
+      background: var(--card);
+      border-radius: 18px;
+      overflow: hidden;
+      padding: 0;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      text-align: left;
+
+      transition: transform .18s ease, border-color .18s ease, filter .18s ease, opacity .18s ease;
+    }
+
+    .houseChoiceLabel{
+      display: block;
+      text-align: center;
+      padding: 14px 14px;
+      margin: 0;
+
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+
+      color: var(--text);
+      background: rgba(255,255,255,.045);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .houseChoice img{
+      display: block;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    @media (max-width: 900px){
+      .houseChoice img{ height: 200px; }
+    }
+    @media (max-width: 600px){
+      .houseChoice img{ height: 150px; }
+    }
+
+    /* Hint sits under image (like a caption) */
+    .houseChoiceHint{
+      display: block;
+      text-align: center;
+
+      margin: 10px 0 12px;
+      padding: 8px 14px;
+
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: .1px;
+
+      color: rgba(255,255,255,.9);
+
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    /* Selected / unselected visuals */
+    .houseChoice.is-selected{
+      border-color: rgba(255,255,255,.22);
+      transform: translateY(-1px);
+    }
+    .houseChoice.is-dim{
+      filter: grayscale(.95) blur(1.6px);
+      opacity: .70;
+      transform: none;
+    }
+
+    /* Hint disappears on selected tile; shows on the other */
+    .houseChoice.is-selected .houseChoiceHint{
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+    }
+    .houseChoice.is-dim .houseChoiceHint{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .partnerDivider{
+      height: 1px;
+      margin: 16px 0 14px;
+      background: rgba(255,255,255,.10);
+    }
+
+    /* ===== Calendar + partner module (one at a time) ===== */
+    .bookingModule{
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    @media (max-width: 600px){
+      .bookingModule{ padding: 14px; }
+    }
+
+    /* Locked state when no house chosen */
+    .bookingModule.is-locked{
+      opacity: .78;
+    }
+
+    /* Hide/show the two panels */
+    .bookingPanel{
+      display: none;
+    }
+    .bookingPanel.is-active{
+      display: block;
+    }
+
+    /* Placeholder panel shown before selection */
+    .bookingPlaceholder{
+      border: 1px dashed rgba(255,255,255,.18);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      background: rgba(255,255,255,.03);
+    }
+    .bookingPlaceholder strong{
+      display: inline-block;
+      margin-top: 6px;
+      color: var(--text);
+    }
+
+    /* Partner buttons disabled until selection */
+    .partnerBtn.is-disabled{
+      pointer-events: none;
+      opacity: .72;
+      filter: grayscale(.15);
+    }
+    .partnerBtn.is-disabled .partnerMeta{
+      color: rgba(255,255,255,.78);
+    }
+    .partnerBtn.is-disabled::before{
+      opacity: .35;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+          <img src="images/home/TPH-logo.svg" alt="The Pučišća Houses logo" class="brandLogo" />
+          <div class="brandText">
+            <strong>The Pučišća Houses</strong>
+            <span>Brač • Croatia</span>
+          </div>
+        </a>
+
+        <div class="navlinks">
+          <a href="white-house.html">The White House</a>
+          <a href="glass-house.html">The Glass House</a>
+          <a href="booking.html" class="btn">Enquire now</a>
+        </div>
+
+        <button class="hamburger" data-hamburger aria-label="Open menu">☰</button>
+      </nav>
+
+      <div class="mobileMenu" data-mobilemenu>
+        <a href="white-house.html">The White House</a>
+        <a href="glass-house.html">The Glass House</a>
+        <a href="booking.html">Enquire now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 1) CHOOSE HOUSE (top) -->
+<section class="section section--first">
+  <div class="container">
+    <div class="surfaceBox bookingPartnersBox">
+      <h2 class="sectionTitleCenter">Choose a house</h2>
+      <p class="sectionIntroCenter">Select a house to open the calendar and partner links.</p>
+
+      <div class="housePicker" role="group" aria-label="Choose house">
+        <!-- WHITE HOUSE -->
+        <button class="houseChoice" type="button" data-house="twh" aria-pressed="false">
+          <span class="houseChoiceLabel">The White House</span>
+
+          <picture>
+            <!-- 📱 MOBILE WebP -->
+            <source media="(max-width: 768px)" srcset="images/WebPWH/mobile/mobile14back-pool-utsikt.webp" type="image/webp">
+            <!-- 💻 DESKTOP WebP -->
+            <source srcset="images/WebPWH/14back-pool-utsikt.webp" type="image/webp">
+            <!-- 🧯 FALLBACK JPG -->
+            <img
+              src="images/white-house/pool/14back-pool-utsikt.jpg"
+              alt="The White House"
+              width="1600"
+              height="1068"
+              loading="lazy"
+              decoding="async">
+          </picture>
+
+          <span class="houseChoiceHint">Tap to select</span>
+        </button>
+
+        <!-- GLASS HOUSE -->
+        <button class="houseChoice" type="button" data-house="tgh" aria-pressed="false">
+          <span class="houseChoiceLabel">The Glass House</span>
+
+          <picture>
+            <!-- 📱 MOBILE WebP -->
+            <source media="(max-width: 768px)" srcset="images/WebPGH/Mobile/5AF40E48-BA15-4CD6-94CF-F612D8C79B16_1_201_a.jpeg" type="image/webp">
+            <!-- 💻 DESKTOP WebP -->
+            <source srcset="images/WebPGH/DT/_N624029_ivanisevicivan.com.webp" type="image/webp">
+            <!-- 🧯 FALLBACK JPG -->
+            <img
+              src="images/glass-house/utesone foran hus/_N624029_ivanisevicivan.com.jpg"
+              alt="The Glass House"
+              width="1600"
+              height="1068"
+              loading="lazy"
+              decoding="async">
+          </picture>
+
+          <span class="houseChoiceHint">Tap to select</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- 2) CALENDAR + PARTNER LINKS (one active at a time) -->
+    <section class="section">
+      <div class="container">
+
+        <div class="bookingModule is-locked" data-booking-module>
+          <h2 data-booking-title>Availability & Price Estimate</h2>
+          <p class="sub" data-booking-sub>
+            Minimum stay is <strong>3 nights</strong>. Choose a house to begin.
+          </p>
+
+          <div style="margin-top:18px;">
+            <!-- Placeholder (shown until selection) -->
+            <div class="bookingPlaceholder" data-booking-placeholder>
+              <div class="sub">Choose a house above to unlock the calendar and booking partners.</div>
+              <strong>Choose a house</strong>
+            </div>
+
+            <!-- WHITE HOUSE PANEL (kept intact for booking.js) -->
+            <div class="panel bookingPanel" id="white" data-booking data-house="WH" data-panel="twh">
+              <h1 style="margin:0 0 8px 0; text-align: center;">The White House</h1>
+              <p class="sub" style="margin:0 0 14px 0;">
+                Brač stone elegance • Two kitchens • Pool • Jacuzzi • Gym
+              </p>
+
+              <div class="label">Select dates (min 3 nights)</div>
+              <div class="inputWithIcon">
+                <svg class="inputIcon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+                  <line x1="16" y1="2.5" x2="16" y2="6"></line>
+                  <line x1="8" y1="2.5" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+
+                <input
+                  data-range
+                  type="text"
+                  placeholder="Check-in → Check-out"
+                  readonly
+                  inputmode="none"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                />
+              </div>
+
+              <div class="row" style="margin-top:12px;">
+                <div class="kpi">
+                  <strong data-nights>-</strong>
+                  <div class="label">Length</div>
+                </div>
+                <div class="kpi">
+                  <strong data-avg>-</strong>
+                  <div class="label">Avg nightly</div>
+                </div>
+                <div class="kpi">
+                  <strong data-total>-</strong>
+                  <div class="label">Estimated total</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GLASS HOUSE PANEL (kept intact for booking.js) -->
+            <div class="panel bookingPanel" id="glass" data-booking data-house="GH" data-panel="tgh">
+              <h1 style="margin:0 0 8px 0; text-align: center;">The Glass House</h1>
+              <p class="sub" style="margin:0 0 14px 0;">
+                Ultra-modern • Sauna • Pool • Jacuzzi • Gym
+              </p>
+
+              <div class="label">Select dates (min 3 nights)</div>
+              <div class="inputWithIcon">
+                <svg class="inputIcon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+                  <line x1="16" y1="2.5" x2="16" y2="6"></line>
+                  <line x1="8" y1="2.5" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+
+                <input
+                  data-range
+                  type="text"
+                  placeholder="Check-in → Check-out"
+                  readonly
+                  inputmode="none"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                />
+              </div>
+
+              <div class="row" style="margin-top:12px;">
+                <div class="kpi">
+                  <strong data-nights>-</strong>
+                  <div class="label">Length</div>
+                </div>
+                <div class="kpi">
+                  <strong data-avg>-</strong>
+                  <div class="label">Avg nightly</div>
+                </div>
+                <div class="kpi">
+                  <strong data-total>-</strong>
+                  <div class="label">Estimated total</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="partnerDivider" aria-hidden="true"></div>
+
+          <!-- Partner buttons (shared, links update after house selection) -->
+          <div class="partnerBtns" data-partner-btns>
+            <a class="partnerBtn partnerBtn--booking is-disabled" data-partner="booking" href="" target="_blank" rel="noopener" aria-disabled="true">
+              <span class="partnerLogo" aria-hidden="true"></span>
+              <span class="partnerLabel">Booking.com</span>
+              <span class="partnerMeta">Choose a house</span>
+            </a>
+
+            <a class="partnerBtn partnerBtn--airbnb is-disabled" data-partner="airbnb" href="#" target="_blank" rel="noopener" aria-disabled="true">
+              <span class="partnerLogo" aria-hidden="true"></span>
+              <span class="partnerLabel">Airbnb.com</span>
+              <span class="partnerMeta">Choose a house</span>
+            </a>
+
+            <a class="partnerBtn partnerBtn--finn is-disabled" data-partner="finn" href="#" target="_blank" rel="noopener" aria-disabled="true">
+              <span class="partnerLogo" aria-hidden="true"></span>
+              <span class="partnerLabel">FINN.no</span>
+              <span class="partnerMeta">Choose a house</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- For questions section -->
+<!-- For questions section -->
+<section class="section">
+  <div class="container" style="text-align:center;">
+
+    <h2>For questions on booking</h2>
+
+    <p class="sub" style="margin-top:10px;">
+      Email:
+      <a href="mailto:Nicola@Plowman.no">Nicola@Plowman.no</a>
+    </p>
+
+    <p class="sub" style="margin-top:6px;">
+      Phone:
+      <a href="tel:+4791614608">+47 916 14 608</a>
+    </p>
+
+  </div>
+</section>
+
+
+    <!-- PRICE OVERVIEW (kept as you had it) -->
+    <section class="section">
+      <div class="container">
+        <div class="surfaceBox">
+          <h2>Season price overview</h2>
+          <div class="cardBody">
+            <p class="sub1" style="margin:0;">
+              Example seasonal pricing (editable):
+              <br>01 May – 05 June: €1500/night
+              <br>06 June – 30 June: €1400/night
+              <br>01 July – 14 September: €1900/night
+              <br>15 September – 01 November: €1500/night
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+        <span>© <span id="year"></span> The Pučišća Houses</span>
+        <span>Pučišća • Brač • Croatia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Your site JS (menu, etc.) -->
+  <script src="js/main.js"></script>
+
+  <!-- Flatpickr calendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- Booking logic (Airbnb sync + pricing) -->
+  <script src="js/booking.js"></script>
+
+  <!-- Page logic: choose house -> show one calendar + update partner links -->
+  <script>
+    (function bookingPageOverhaul(){
+      const chooserBtns = document.querySelectorAll(".houseChoice");
+      const module = document.querySelector("[data-booking-module]");
+      const placeholder = document.querySelector("[data-booking-placeholder]");
+      const panels = document.querySelectorAll(".bookingPanel");
+      const partnerBtns = document.querySelectorAll("[data-partner-btns] .partnerBtn");
+      const title = document.querySelector("[data-booking-title]");
+      const sub = document.querySelector("[data-booking-sub]");
+
+      if (!chooserBtns.length || !module || !placeholder || !panels.length || !partnerBtns.length) return;
+
+      // Replace with real URLs later
+      const LINKS = {
+        twh: {
+          label: "The White House",
+          booking: "https://www.booking.com/hotel/hr/the-white-house-brac.en-gb.html?aid=356980&dist=0&keep_landing=1&label=gog235jc-1DCAsoZUIUdGhlLXdoaXRlLWhvdXNlLWJyYWNIM1gDaKoBiAEBmAEJuAEHyAEN2AED6AEBiAIBqAIDuAKk6dCkBsACAdICJDkwNjY1OTBlLWZkYjUtNGI3Ny1iOTMzLTI5YTgzZmNlOWRlY9gCBOACAQ&sb_price_type=total&sid=5f32737ee5b684a2dfe32de2981f4d07&type=total",
+          airbnb:  "https://www.airbnb.com/rooms/14230531?source_impression_id=p3_1687949656_ThFlGVTAkJW6LJkO",
+          finn:    "https://www.finn.no/reise/feriehus-hytteutleie/ad.html?finnkode=86947180"
+        },
+        tgh: {
+          label: "The Glass House",
+          booking: "https://www.booking.com/hotel/hr/the-glass-house-luxury-villa-by-the-sea-with-pool-jacuzzi-sauna-and-gym.en-gb.html",
+          airbnb:  "https://www.airbnb.com/rooms/868107707231954997?adults=12&check_in=2023-07-09&check_out=2023-07-16&federated_search_id=49af548a-09ce-4842-898d-e45f527bbf8e&previous_page_section_name=1000&source_impression_id=p3_1687949837_PuIbCE4EV6s9DzFt",
+          finn:    "https://www.finn.no/reise/feriehus-hytteutleie/ad.html?finnkode=298707533"
+        }
+      };
+
+      function setSelected(houseKey){
+        // Toggle house tiles
+        chooserBtns.forEach(btn => {
+          const isSel = btn.dataset.house === houseKey;
+          btn.classList.toggle("is-selected", isSel);
+          btn.classList.toggle("is-dim", !isSel);
+          btn.setAttribute("aria-pressed", isSel ? "true" : "false");
+        });
+
+        // Unlock module + hide placeholder
+        module.classList.remove("is-locked");
+        placeholder.style.display = "none";
+
+        // Show only the relevant panel
+        panels.forEach(p => {
+          const isActive = p.dataset.panel === houseKey;
+          p.classList.toggle("is-active", isActive);
+        });
+
+        // Update header text
+        if (title) title.textContent = "Availability & Price Estimate";
+        if (sub) sub.innerHTML = `Minimum stay is <strong>3 nights</strong>. Showing: <strong>${LINKS[houseKey].label}</strong>.`;
+
+        // Enable + update partner links
+        partnerBtns.forEach(a => {
+          const partner = a.dataset.partner; // booking / airbnb / finn
+          a.href = LINKS[houseKey][partner];
+
+          a.classList.remove("is-disabled");
+          a.removeAttribute("aria-disabled");
+
+          const meta = a.querySelector(".partnerMeta");
+          if (meta) meta.textContent = LINKS[houseKey].label;
+        });
+      }
+
+      // Initial state: locked, no calendar shown, buttons disabled
+      panels.forEach(p => p.classList.remove("is-active"));
+      chooserBtns.forEach(btn => {
+        btn.classList.remove("is-selected", "is-dim");
+        btn.setAttribute("aria-pressed", "false");
+      });
+
+      partnerBtns.forEach(a => {
+        a.classList.add("is-disabled");
+        a.setAttribute("aria-disabled", "true");
+        a.href = "#";
+        const meta = a.querySelector(".partnerMeta");
+        if (meta) meta.textContent = "Choose a house";
+      });
+
+      chooserBtns.forEach(btn => {
+        btn.addEventListener("click", () => setSelected(btn.dataset.house));
+      });
+    })();
+  </script>
+</body>
+</html>

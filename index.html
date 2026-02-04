@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Pučišća Houses</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Leaflet (for map on homepage if you want later) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  
+<!-- calendar -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+</head>
+
+<body>
+  <!-- HEADER / NAV -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">
+  <img
+    src="images/home/TPH-logo.svg"
+    alt="The Pučišća Houses logo"
+    class="brandLogo"
+  />
+
+  <div class="brandText">
+    <strong>The Pučišća Houses</strong>
+    <span>Brač • Croatia</span>
+  </div>
+</a>
+
+        <div class="navlinks">
+          <a href="white-house.html">The White House</a>
+          <a href="glass-house.html">The Glass House</a>
+          <a href="booking.html" class="btn">Enquire now</a>
+        </div>
+
+        <button class="hamburger" data-hamburger aria-label="Open menu">☰</button>
+      </nav>
+
+      <div class="mobileMenu" data-mobilemenu>
+        <a href="white-house.html">The White House</a>
+        <a href="glass-house.html">The Glass House</a>
+        <a href="booking.html">Enquire now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- VILLAS OVERVIEW -->
+    <section class="section section--first">
+      <div class="container">
+        <h2 style="text-align:center;">Luxury Villas in Croatia</h2>
+        <p class="heroIntro">
+  Two Exceptional Houses in Pučišća, Brač — Designed for Unforgettable Group Stays
+</p>
+
+<div class="reviewsMeta" aria-label="Review summary" style="text-align: center;">
+  <span class="reviewsStars">★★★★★</span>
+  <span class="reviewsScore">4.9</span>
+  <span class="reviewsCount">· 100+ verified stays</span>
+</div>
+
+    <!-- Key highlights / pills -->
+<div class="highlights" aria-label="Key highlights">
+  <span class="pillTag">Sleeps up to 16</span>
+  <span class="pillTag">Heated private pools</span>
+  <span class="pillTag">Fantastic views</span>
+  <span class="pillTag">Perfect for large groups</span>
+</div>
+
+<!-- PREVIEW GALLERY (single, almost full-screen) -->
+<section class="previewGallery" aria-label="Photo preview gallery">
+  <div class="container">
+    <div class="pg" data-pg>
+      <button class="pgArrow prev" type="button" aria-label="Previous photo">‹</button>
+
+      <div class="pgViewport" tabindex="0">
+        <div class="pgTrack">
+
+          <!-- Slide 1 -->
+  <a class="pgSlide" aria-label="View The White House">
+    <picture>
+    
+    <!-- Mobile version (4:5 crop) -->
+      <source
+        media="(max-width: 768px)"
+        srcset="images/WebP/mobile12spisebord-utsikt.webp"
+        type="image/webp">
+
+      <!-- Desktop version (16:9 crop) -->
+      <source
+        srcset="images/WebP/6ADD3B2A-D06F-4A2A-8B8C-F8CA0F7AE871.webp"
+        type="image/webp">
+
+      <!-- Fallback -->
+      <img
+        src="images/white-house/spisebord med utsikt/12spisebord-utsikt.jpg"
+        alt="Spisebord med utsikt"
+        width="1600"
+        height="1068"
+        fetchpriority="high"
+        decoding="async">
+    </picture>
+</a>
+
+          <!-- Slide 2 -->
+          <a class="pgSlide" aria-label="View The White House">
+    <picture>
+    
+    <!-- Mobile version (4:5 crop) -->
+      <source
+        media="(max-width: 768px)"
+        data-srcset="images/WebP/mobileDJI_0079_DxO_ivanisevicivan.com.webp"
+        type="image/webp">
+
+      <!-- Desktop version (16:9 crop) -->
+      <source
+        data-srcset="images/WebP/73712CC1-BBDE-4B35-967D-E1726A763653.webp"
+        type="image/webp">
+
+      <!-- Fallback -->
+      <img
+        data-src="images/glass-house/ekstra dronebilder/DJI_0079_DxO_ivanisevicivan.com.jpg"
+        alt="Spisebord med utsikt"
+        width="1600"
+        height="1068"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low">
+    </picture>
+</a>
+
+          <!-- Slide 3 -->
+                <a class="pgSlide" aria-label="View The White House">
+    <picture>
+    
+    <!-- Mobile version (4:5 crop) -->
+      <source
+        media="(max-width: 768px)"
+        srcset="images/WebP/mobile15pool.webp"
+        type="image/webp">
+
+      <!-- Desktop version (16:9 crop) -->
+      <source
+        srcset="images/WebP/C4E20932-B731-4795-AF5D-D058FF6178D3_1_201_a.webp"
+        type="image/webp">
+
+      <!-- Fallback -->
+      <img
+        src="images/white-house/pool/15pool.jpg"
+        alt="Spisebord med utsikt"
+        width="1600"
+        height="1068"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low">
+    </picture>
+</a>
+
+          <!-- Slide 4 -->
+          <a class="pgSlide" aria-label="View The White House">
+    <picture>
+    
+    <!-- Mobile version (4:5 crop) -->
+      <source
+        media="(max-width: 768px)"
+        srcset="images/WebP/mobile813A38E0-DC85-45B1-B5B8-E66F50CA8422_1_201_a.webp"
+        type="image/webp">
+
+      <!-- Desktop version (16:9 crop) -->
+      <source
+        srcset="images/WebP/D9802B5B-BF36-44BE-A6CC-F55E023BEA88.webp"
+        type="image/webp">
+
+      <!-- Fallback -->
+      <img
+        src="images/glass-house/inne spisebord/813A38E0-DC85-45B1-B5B8-E66F50CA8422_1_201_a.jpeg"
+        alt="Spisebord med utsikt"
+        width="1600"
+        height="1068"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low">
+    </picture>
+</a>
+
+        </div>
+      </div>
+
+      <button class="pgArrow next" type="button" aria-label="Next photo">›</button>
+
+      <div class="pgDots" aria-label="Gallery position"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHITE HOUSE CARD -->
+<div class="grid2" style="margin-top:18px;">
+  <article class="card">
+    <div class="cardMedia" data-carousel>
+      <div class="cardCarousel">
+
+        <picture>
+  <!-- 📱 MOBILE (4:5 version you cropped) -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/WebP/mobile14back-pool-utsikt.webp"
+            type="image/webp">
+
+  <!-- 💻 DESKTOP (your wide original crop) -->
+          <source
+            srcset="images/WebP/794557F7-6C77-4E6A-89E7-D6843A2F5826.webp"
+            type="image/webp">
+
+  <!-- 🧯 FALLBACK JPG -->
+          <img
+            src="images/white-house/pool/14back-pool-utsikt.jpg"
+            alt="The White House pool and outdoor area"
+            loading="lazy"
+            decoding="async">
+        </picture>
+
+        <picture>
+  <!-- 📱 MOBILE (4:5 version you cropped) -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/WebP/mobile11front-house.webp"
+            type="image/webp">
+
+  <!-- 💻 DESKTOP (your wide original crop) -->
+          <source
+            srcset="images/WebP/12BFDD59-ADCA-4D46-96B4-9C756A5A598D.webp"
+            type="image/webp">
+
+  <!-- 🧯 FALLBACK JPG -->
+          <img
+            src="images/white-house/outside front/11front-house.jpg"
+            alt="The White House pool and outdoor area"
+            loading="lazy"
+            decoding="async">
+        </picture>
+
+        <picture>
+  <!-- 📱 MOBILE (4:5 version you cropped) -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/WebP/mobile56view-mot-landsby-spisebord.webp"
+            type="image/webp">
+
+  <!-- 💻 DESKTOP (your wide original crop) -->
+          <source
+            srcset="images/WebP/0697395E-C7E9-4550-BE8D-4915457510F6.webp"
+            type="image/webp">
+
+  <!-- 🧯 FALLBACK JPG -->
+          <img
+            src="images/white-house/spisebord med utsikt/56view-mot-landsby-spisebord.jpg"
+            alt="The White House pool and outdoor area"
+            loading="lazy"
+            decoding="async">
+        </picture>
+
+                <picture>
+  <!-- 📱 MOBILE (4:5 version you cropped) -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/WebP/mobile_N617267_ivanisevicivan.com.webp"
+            type="image/webp">
+
+  <!-- 💻 DESKTOP (your wide original crop) -->
+          <source
+            srcset="images/WebP/A732DB7C-1F43-4995-A189-36BE0F47018D.webp"
+            type="image/webp">
+
+  <!-- 🧯 FALLBACK JPG -->
+          <img
+            src="images/glass-house/utsikt/_N617267_ivanisevicivan.com.jpg"
+            alt="The White House pool and outdoor area"
+            loading="lazy"
+            decoding="async">
+        </picture>
+
+      </div>
+
+      <button class="carouselArrow prev" aria-label="Previous">‹</button>
+      <button class="carouselArrow next" aria-label="Next">›</button>
+
+      <div class="carouselDots"></div>
+    </div>
+
+    <div class="cardBody">
+      <h3>The White House</h3>
+      <p>
+        Built with famous Brač stone, featuring two kitchens,
+        six ensuite bedrooms, and generous terraces for group stays.
+      </p>
+      <a class="btn" href="white-house.html">View details</a>
+    </div>
+  </article>
+
+  <!-- GLASS HOUSE CARD -->
+  <article class="card">
+    <div class="cardMedia" data-carousel>
+      <div class="cardCarousel">
+
+        <picture>
+  <!-- 📱 MOBILE (4:5 version you cropped) -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/WebP/mobile_N624029_ivanisevicivan.com.webp"
+            type="image/webp">
+
+  <!-- 💻 DESKTOP (your wide original crop) -->
+          <source
+            srcset="images/WebP/F4D597EE-2041-4382-870F-27986C4B3A6D.webp"
+            type="image/webp">
+
+  <!-- 🧯 FALLBACK JPG -->
+          <img
+            src="images/glass-house/utesone foran hus/_N624029_ivanisevicivan.com.jpg"
+            alt="The White House pool and outdoor area"
+            loading="lazy"
+            decoding="async">
+        </picture>
+
+        <picture>
+  <!-- 📱 MOBILE (4:5 version you cropped) -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/WebP/mobileDJI_0121_DxO_ivanisevicivan.com.webp"
+            type="image/webp">
+
+  <!-- 💻 DESKTOP (your wide original crop) -->
+          <source
+            srcset="images/WebP/06D8E6E8-548C-45B7-8A78-D3E5ADA52BB8.webp"
+            type="image/webp">
+
+  <!-- 🧯 FALLBACK JPG -->
+          <img
+            src="images/glass-house/utesone foran hus/DJI_0121_DxO_ivanisevicivan.com.jpg"
+            alt="The White House pool and outdoor area"
+            loading="lazy"
+            decoding="async">
+        </picture>
+
+        <picture>
+  <!-- 📱 MOBILE (4:5 version you cropped) -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/WebP/mobile_N623913_ivanisevicivan.com.webp"
+            type="image/webp">
+
+  <!-- 💻 DESKTOP (your wide original crop) -->
+          <source
+            srcset="images/WebP/D4B1FD1B-9E22-4AE7-9581-54BEAE9F68C7.webp"
+            type="image/webp">
+
+  <!-- 🧯 FALLBACK JPG -->
+          <img
+            src="images/glass-house/utesone basseng/_N623913_ivanisevicivan.com.jpg"
+            alt="The White House pool and outdoor area"
+            loading="lazy"
+            decoding="async">
+        </picture>
+
+        <picture>
+  <!-- 📱 MOBILE (4:5 version you cropped) -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/WebP/mobile_N617370_ivanisevicivan.com.webp"
+            type="image/webp">
+
+  <!-- 💻 DESKTOP (your wide original crop) -->
+          <source
+            srcset="images/WebP/19D1641E-3DA0-462E-A3D0-85D7896909B7.webp"
+            type="image/webp">
+
+  <!-- 🧯 FALLBACK JPG -->
+          <img
+            src="images/glass-house/utsikt/_N617370_ivanisevicivan.com.jpg"
+            alt="The White House pool and outdoor area"
+            loading="lazy"
+            decoding="async">
+        </picture>
+
+      </div>
+
+      <button class="carouselArrow prev" aria-label="Previous">‹</button>
+      <button class="carouselArrow next" aria-label="Next">›</button>
+
+      <div class="carouselDots"></div>
+    </div>
+
+    <div class="cardBody">
+      <h3>The Glass House</h3>
+      <p>
+        A modern hillside villa with sauna, balconies in every bedroom,
+        and sweeping views over the Adriatic Sea.
+      </p>
+      <a class="btn" href="glass-house.html">View details</a>
+    </div>
+  </article>
+
+</div>
+
+
+
+    <!-- REVIEWS -->
+<section class="section">
+  <div class="container">
+    <div class="reviewsBox">
+    <h2 style="text-align:center;">Reviews</h2>
+
+
+
+    <div class="reviews-carousel" aria-label="Reviews carousel">
+      <button class="carousel-btn prev" type="button" aria-label="Previous reviews">
+        ‹
+      </button>
+
+      <div class="carousel-viewport" tabindex="0">
+        <div class="carousel-track">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">
+              It was an amazing place to stay!
+            </p>
+            <small>Ellie, 2025</small>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">
+              The house was beautiful, with all the amenities you could wish for, the view stunning and the village pittoresque. The host provided us with great information in advance, and the housekeeper was outstanding in replying to our requests, helping us during the stay, coming with recommendations and being of service throughout the stay! Highly recommend for a fantastic vacation!
+            </p>
+            <small>Magnus, 2025</small>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">
+              Just do it - rented villas around the world and this is one of the very best - full 5 star
+              <br><br>Everything to a high standard and a wonderful setting in a wonderful village
+            </p>
+            <small>Graham, 2023</small>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">
+              Perfect, Thank you so much for a fantastic stay.
+              <br>The whole place is absolutely stunning. The host made us cake and tried to fix the internet when it went down (it seemed to go down for the whole village so not their fault).
+              <br>One of the guests lost their wedding ring, not only did the host find it, they posted it back to us free of charge with a little gift! If only we could fit more people in, we would be back!
+            </p>
+            <small>Chris, 2023</small>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">
+              beautiful house on hill overlooking the harbour,  a stunning view. very spacious,  clean, comfortable,  cool, well equipped, modern building. Pucisce itself is charming. Jerka is fantastic and Cezars taxi service incredibly helpful and friendly. We had a great time,  thanks!
+            </p>
+            <small>Tim, 2021</small>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">
+              House was even nicer than expected, perfect location and communication with Tina was outstanding
+            </p>
+            <small>Ulrikke, 2025</small>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">
+              The villa was exceptional in every way.
+<br>Location, design, quality of finish, space and views were all supurb. I can not recommended  it enough.
+The communications from Nicola prior to arrival were excellent. 
+Once we arrived the service from the housekeeper was outstanding. Nothing was too much trouble including sourcing excellent fresh fish for a bbq.
+<br><br>We hope to return soon
+            </p>
+            <small>Steve, 2016</small>
+          </article>
+
+          <!-- Add more <article class="review-card"> ... </article> here -->
+        </div>
+      </div>
+
+      <button class="carousel-btn next" type="button" aria-label="Next reviews">
+        ›
+      </button>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- COMBINED AVAILABILITY (either house) -->
+<section class="section">
+  <div class="container">
+      <h2 style="text-align:center;">Check availability</h2>
+
+      <p class="sub" style="text-align:center; margin: 8px auto 0; max-width: 70ch;">
+        Minimum stay is <strong>3 nights</strong>. This calendar shows availability if
+        <strong>either</strong> house is available.
+      </p>
+
+      <div class="bookingGrid bookingGrid--single" style="margin-top:18px;">
+        <div class="panel" data-combined-booking>
+          <h3 style="margin:0 0 8px 0; text-align: center;">The Pučišća Houses</h3>
+
+          <p class="sub" style="margin:0 0 14px 0;">
+            Select your dates to see which house is available.
+          </p>
+
+          <div class="inputWithIcon">
+            <svg class="inputIcon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+              <line x1="16" y1="2.5" x2="16" y2="6"></line>
+              <line x1="8" y1="2.5" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+
+            <input
+              data-range
+              type="text"
+              placeholder="Check-in → Check-out"
+              readonly
+              inputmode="none"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            />
+          </div>
+
+          <div class="row" style="margin-top:12px;">
+            <div class="kpi">
+              <strong data-nights>-</strong>
+              <div class="label"></div>
+            </div>
+            <div class="kpi" style="flex:1;">
+              <strong data-availability>-</strong>
+              <div class="label"></div>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:12px; justify-content:center;">
+            <a class="btn" href="booking.html">
+              Enquire now
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+        <span>© <span id="year"></span> The Pučišća Houses</span>
+        <span>Pučišća • Brač • Croatia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Site JS (menu + slideshow) -->
+  <script src="js/main.js"></script>
+  
+  <script>
+  (function () {
+    const carousel = document.querySelector(".reviews-carousel");
+    if (!carousel) return;
+
+    const viewport = carousel.querySelector(".carousel-viewport");
+    const track = carousel.querySelector(".carousel-track");
+    const prevBtn = carousel.querySelector(".carousel-btn.prev");
+    const nextBtn = carousel.querySelector(".carousel-btn.next");
+
+    function cardWidth() {
+      const first = track.querySelector(".review-card");
+      if (!first) return 0;
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || "0");
+      return first.getBoundingClientRect().width + gap;
+    }
+
+    function updateButtons() {
+      const maxScroll = track.scrollWidth - viewport.clientWidth;
+      prevBtn.disabled = viewport.scrollLeft <= 2;
+      nextBtn.disabled = viewport.scrollLeft >= maxScroll - 2;
+    }
+
+    function scrollByCards(dir) {
+      viewport.scrollBy({ left: dir * cardWidth(), behavior: "smooth" });
+    }
+
+    prevBtn.addEventListener("click", () => scrollByCards(-1));
+    nextBtn.addEventListener("click", () => scrollByCards(1));
+
+    viewport.addEventListener("scroll", updateButtons, { passive: true });
+    window.addEventListener("resize", updateButtons);
+
+    // Swipe/drag support
+    let isDown = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    viewport.addEventListener("pointerdown", (e) => {
+      isDown = true;
+      viewport.setPointerCapture(e.pointerId);
+      startX = e.clientX;
+      startScroll = viewport.scrollLeft;
+    });
+
+    viewport.addEventListener("pointermove", (e) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      viewport.scrollLeft = startScroll - dx;
+    });
+
+    viewport.addEventListener("pointerup", () => {
+      isDown = false;
+      // Snap to nearest card
+      const w = cardWidth();
+      if (!w) return;
+      const snapped = Math.round(viewport.scrollLeft / w) * w;
+      viewport.scrollTo({ left: snapped, behavior: "smooth" });
+    });
+
+    viewport.addEventListener("pointercancel", () => { isDown = false; });
+    updateButtons();
+  })();
+</script>
+
+<script>
+document.querySelectorAll("[data-carousel]").forEach(carousel => {
+  const track = carousel.querySelector(".cardCarousel");
+  const slides = Array.from(track.querySelectorAll("img"));
+  const prev = carousel.querySelector(".carouselArrow.prev");
+  const next = carousel.querySelector(".carouselArrow.next");
+  const dotsWrap = carousel.querySelector(".carouselDots");
+
+  let index = 0;
+  let startIndex = 0;
+  let settlingTimer = null;
+  let isDragging = false;
+
+  function isMobile(){
+    return window.matchMedia("(max-width: 760px)").matches;
+  }
+
+  function slideWidth(){
+    return track.getBoundingClientRect().width || 1;
+  }
+
+  function setActiveDot(i){
+    const dots = Array.from(dotsWrap.children);
+    dots.forEach(d => d.classList.remove("active"));
+    if (dots[i]) dots[i].classList.add("active");
+  }
+
+  function goTo(i, smooth){
+    index = Math.max(0, Math.min(i, slides.length - 1));
+    setActiveDot(index);
+
+    if (isMobile()){
+      track.scrollTo({ left: index * slideWidth(), behavior: smooth ? "smooth" : "auto" });
+    } else {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+  }
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Go to image ${i + 1}`);
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      // clicking dots is intentional navigation: allow any jump
+      startIndex = i;
+      goTo(i, true);
+    });
+    dotsWrap.appendChild(dot);
+  });
+
+  // Desktop arrows (allow one step per click)
+  prev?.addEventListener("click", () => goTo(index - 1, true));
+  next?.addEventListener("click", () => goTo(index + 1, true));
+
+  // --- Mobile: clamp to +/- 1 slide PER GESTURE ---
+  track.addEventListener("pointerdown", () => {
+    if (!isMobile()) return;
+    isDragging = true;
+    startIndex = Math.round(track.scrollLeft / slideWidth());
+    if (settlingTimer) clearTimeout(settlingTimer);
+  });
+
+  track.addEventListener("pointerup", () => {
+    if (!isMobile()) return;
+    isDragging = false;
+    // we don't snap here; we snap when scrolling settles
+  });
+
+  track.addEventListener("pointercancel", () => {
+    if (!isMobile()) return;
+    isDragging = false;
+  });
+
+  function scheduleSettleSnap(){
+    if (!isMobile()) return;
+    if (settlingTimer) clearTimeout(settlingTimer);
+
+    settlingTimer = setTimeout(() => {
+      const raw = Math.round(track.scrollLeft / slideWidth());
+
+      // Clamp movement to max 1 slide from the gesture start
+      const clamped = Math.max(startIndex - 1, Math.min(raw, startIndex + 1));
+
+      goTo(clamped, true);
+    }, 140); // wait for momentum scroll to stop
+  }
+
+  // Scroll listener: update dots live + snap when scroll ends
+  track.addEventListener("scroll", () => {
+    if (!isMobile()) return;
+
+    const raw = Math.round(track.scrollLeft / slideWidth());
+    const bounded = Math.max(0, Math.min(raw, slides.length - 1));
+
+    if (bounded !== index){
+      index = bounded;
+      setActiveDot(index);
+    }
+
+    // Every scroll event pushes the settle timer out
+    scheduleSettleSnap();
+  }, { passive: true });
+
+  // Re-snap on resize/orientation change
+  window.addEventListener("resize", () => goTo(index, false));
+
+  // Init
+  goTo(0, false);
+});
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll("[data-pg]").forEach(pg => {
+    const viewport = pg.querySelector(".pgViewport");
+    const track = pg.querySelector(".pgTrack");
+    const slides = Array.from(pg.querySelectorAll(".pgSlide"));
+    const prev = pg.querySelector(".pgArrow.prev");
+    const next = pg.querySelector(".pgArrow.next");
+    const dotsWrap = pg.querySelector(".pgDots");
+
+    if(!viewport || !track || slides.length === 0) return;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement("span");
+      if(i === 0) dot.classList.add("active");
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function slideWidth(){
+      return viewport.getBoundingClientRect().width || 1;
+    }
+
+    function setActive(i){
+      dots.forEach(d => d.classList.remove("active"));
+      if(dots[i]) dots[i].classList.add("active");
+    }
+
+    function currentIndex(){
+      return Math.round(track.scrollLeft / slideWidth());
+    }
+
+    function goTo(i){
+      const idx = Math.max(0, Math.min(i, slides.length - 1));
+      track.scrollTo({ left: idx * slideWidth(), behavior: "smooth" });
+      setActive(idx);
+    }
+
+    prev?.addEventListener("click", () => goTo(currentIndex() - 1));
+    next?.addEventListener("click", () => goTo(currentIndex() + 1));
+
+    track.addEventListener("scroll", () => {
+      setActive(Math.max(0, Math.min(currentIndex(), slides.length - 1)));
+    }, { passive: true });
+
+    window.addEventListener("resize", () => {
+      // keep dot state consistent after resize
+      setActive(Math.max(0, Math.min(currentIndex(), slides.length - 1)));
+    });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  function enableOneSlideSnap(track, slideSelector) {
+    if (!track) return;
+    const slides = Array.from(track.querySelectorAll(slideSelector));
+    if (slides.length < 2) return;
+
+    let startIndex = 0;
+    let snapping = false;
+    let timer = null;
+
+    // Works for full-width slides AND 85% galleries
+    function slideWidth() {
+      const first = slides[0];
+      const second = slides[1];
+      if (!first) return track.clientWidth || 1;
+
+      // If slides have different offsets, use distance between them
+      if (second) return Math.abs(second.offsetLeft - first.offsetLeft) || first.clientWidth || track.clientWidth || 1;
+
+      return first.clientWidth || track.clientWidth || 1;
+    }
+
+    function currentIndex() {
+      const w = slideWidth();
+      const raw = Math.round(track.scrollLeft / w);
+      return Math.max(0, Math.min(raw, slides.length - 1));
+    }
+
+    function goTo(i) {
+      const w = slideWidth();
+      const idx = Math.max(0, Math.min(i, slides.length - 1));
+      snapping = true;
+      track.scrollTo({ left: idx * w, behavior: "smooth" });
+      // release lock shortly after
+      setTimeout(() => { snapping = false; }, 220);
+    }
+
+    // Record where the gesture started
+    track.addEventListener("pointerdown", () => {
+      startIndex = currentIndex();
+      if (timer) clearTimeout(timer);
+    }, { passive: true });
+
+    // On gesture end, snap to nearest but clamp to +/- 1 slide
+    function onEnd() {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        const raw = currentIndex();
+        const clamped = Math.max(startIndex - 1, Math.min(raw, startIndex + 1));
+        goTo(clamped);
+      }, 90);
+    }
+
+    track.addEventListener("pointerup", onEnd, { passive: true });
+    track.addEventListener("pointercancel", onEnd, { passive: true });
+    track.addEventListener("touchend", onEnd, { passive: true });
+
+    // If momentum keeps going, re-snap after scrolling calms down
+    track.addEventListener("scroll", () => {
+      if (snapping) return;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => goTo(currentIndex()), 120);
+    }, { passive: true });
+
+    // Keep snap correct on rotate/resize
+    window.addEventListener("resize", () => goTo(currentIndex()));
+  }
+
+  // ✅ Preview carousel (full-width slides)
+  document.querySelectorAll(".pgTrack").forEach(track => {
+    enableOneSlideSnap(track, ".pgSlide");
+  });
+
+  // ✅ Card carousels (each image is a “slide”)
+  document.querySelectorAll(".cardCarousel").forEach(track => {
+    enableOneSlideSnap(track, "img");
+  });
+
+  // ✅ Your mobile “galleryThree” carousels (each .g is a slide)
+  document.querySelectorAll("#tour-pucisca .gallery.galleryThree, #tour-poolGH .gallery.galleryThree, #tour-gym .gallery, #tour-blueprints .gallery").forEach(track => {
+    enableOneSlideSnap(track, ".g");
+  });
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="js/combined-availability.js"></script>
+
+</body>
+</html>

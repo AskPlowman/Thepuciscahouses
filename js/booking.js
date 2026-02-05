@@ -7,16 +7,14 @@ const MIN_NIGHTS = 3;
 // Seasonal pricing (edit if WH and GH differ)
 const PRICES = {
   WH: [
-    { from: "2026-05-01", to: "2026-06-05", nightly: 1500 },
-    { from: "2026-06-06", to: "2026-06-30", nightly: 1400 },
-    { from: "2026-07-01", to: "2026-09-14", nightly: 1900 },
-    { from: "2026-09-15", to: "2026-11-01", nightly: 1500 }
+    { from: "2026-04-10", to: "2026-06-04", nightly: 1700 },
+    { from: "2026-06-05", to: "2026-09-13", nightly: 2100 },
+    { from: "2026-09-14", to: "2026-11-04", nightly: 1700 }
   ],
   GH: [
-    { from: "2026-05-01", to: "2026-06-05", nightly: 1500 },
-    { from: "2026-06-06", to: "2026-06-30", nightly: 1400 },
-    { from: "2026-07-01", to: "2026-09-14", nightly: 1900 },
-    { from: "2026-09-15", to: "2026-11-01", nightly: 1500 }
+    { from: "2026-04-10", to: "2026-06-04", nightly: 1700 },
+    { from: "2026-06-05", to: "2026-09-13", nightly: 2100 },
+    { from: "2026-09-14", to: "2026-11-04", nightly: 1700 }
   ]
 };
 

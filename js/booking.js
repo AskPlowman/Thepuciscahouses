@@ -120,6 +120,13 @@ async function initBookingWidget(root) {
     disable: [
       (date) => blockedSet.has(toISODate(date))
     ],
+    // 1. SPORING: Når kalenderen åpnes
+    onOpen: function() {
+      const houseName = houseKey === "WH" ? "White House" : "Glass House";
+      gtag('event', 'calendar_open', {
+        'house_type': houseName
+      });
+    },
     onChange: function (selectedDates) {
       if (selectedDates.length < 2) {
         nightsEl.textContent = "-";
@@ -146,9 +153,19 @@ async function initBookingWidget(root) {
 
       const { total, avg } = estimateTotal(houseKey, checkIn, checkOut);
 
+      // 2. SPORING: Når noen har valgt gyldige datoer og ser prisen
+      const houseName = houseKey === "WH" ? "White House" : "Glass House";
+      gtag('event', 'price_estimate_viewed', {
+        'house_type': houseName,
+        'nights': nights,
+        'total_value': total
+      });
+
       nightsEl.textContent = `${nights} nights`;
       avgEl.textContent = `~€${avg}/night`;
       totalEl.textContent = `€${total.toLocaleString("en-GB")}`;
+
+      // ... resten av koden din (mailto-link osv) ...
 
       // Update mailto link with chosen dates + price
       if (mailBtn) {

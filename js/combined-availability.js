@@ -89,6 +89,14 @@ async function initCombinedWidget(root) {
     dateFormat: "Y-m-d",
     disable: [isDateBlockedForBoth],
 
+    // 1. LEGG TIL DENNE: Sporer når kalenderen på forsiden åpnes
+    onOpen: function() {
+      gtag('event', 'calendar_open', {
+        'house_type': 'Both Houses (Index)',
+        'page_location': 'Homepage'
+      });
+    },
+
     onChange: function (selectedDates) {
       if (selectedDates.length < 2) {
         nightsEl.textContent = "-";
@@ -106,8 +114,6 @@ async function initCombinedWidget(root) {
         return;
       }
 
-      // IMPORTANT: user must stay in ONE house for the whole range.
-      // So we check range against each house separately.
       const whOk = !rangeHitsBlocked(blockedWH, checkIn, checkOut);
       const ghOk = !rangeHitsBlocked(blockedGH, checkIn, checkOut);
 
@@ -119,8 +125,17 @@ async function initCombinedWidget(root) {
         return;
       }
 
+      // 2. LEGG TIL DENNE: Sporer når noen finner ledige datoer på forsiden
+      gtag('event', 'combined_availability_checked', {
+        'nights': nights,
+        'wh_available': whOk,
+        'gh_available': ghOk
+      });
+
       nightsEl.textContent = `${nights} nights`;
       availEl.textContent = prettyAvail(whOk, ghOk);
+      
+      // ... resten av koden din (mailto osv)
 
       // Update email links (include dates)
       const bodyBase =

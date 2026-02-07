@@ -1381,6 +1381,7 @@ h4, h5, h6{ font-weight: 650; }
   border-radius: 18px;
   box-shadow: var(--shadow);
   padding: 18px;
+  text-align: center;
 }
 @media (max-width: 600px){
   .reviewsBox{ padding: 14px; }
@@ -2435,4 +2436,8 @@ html {
 
 .accContent a:hover {
   text-decoration-thickness: 2px;
+}
+
+.bookingBit{
+  margin: 6px 0 0;     /* tidy spacing under the h2 */
 }

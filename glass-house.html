@@ -78,14 +78,14 @@ src="https://www.facebook.com/tr?id=932280332696680&ev=PageView&noscript=1"
         <div class="navlinks">
           <a href="white-house.html">The White House</a>
           <a href="glass-house.html">The Glass House</a>
-          <a href="booking.html" class="btn">Enquire now</a>
+          <a href="booking.html" class="btn">Check availability</a>
         </div>
         <button class="hamburger" data-hamburger aria-label="Open menu">☰</button>
       </nav>
       <div class="mobileMenu" data-mobilemenu>
         <a href="white-house.html">The White House</a>
         <a href="glass-house.html">The Glass House</a>
-        <a href="booking.html">Enquire now</a>
+        <a href="booking.html">Check availability</a>
       </div>
     </div>
   </header>
@@ -519,9 +519,37 @@ Thanks Nicola and Lina.
 </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">© <span id="year"></span> The Pučišća Houses</div>
-  </footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footerRow">
+      <span>© <span id="year"></span> The Pučišća Houses</span>
+
+      <span class="footerLocation">Pučišća • Brač • Croatia</span>
+
+      <div class="footerSocial" aria-label="Social links">
+        <a class="socialLink" href="https://www.instagram.com/thepuciscahouses"
+           target="_blank" rel="noopener"
+           aria-label="Instagram">
+          <!-- Instagram icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9z"/>
+            <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            <path d="M17.5 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+        </a>
+
+        <a class="socialLink" href="https://www.facebook.com/thewhitehousebrac"
+           target="_blank" rel="noopener"
+           aria-label="Facebook">
+          <!-- Facebook icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M13.5 22v-8h2.7l.4-3H13.5V9.1c0-.9.3-1.6 1.7-1.6h1.5V4.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V11H7.5v3H10v8h3.5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   

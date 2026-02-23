@@ -2441,3 +2441,61 @@ html {
 .bookingBit{
   margin: 6px 0 0;     /* tidy spacing under the h2 */
 }
+
+.footerRow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.footerSocial{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.socialLink{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px; /* good tap target for mobile */
+  border-radius:12px;
+  text-decoration:none;
+  color: var(--text);
+  transition: transform .15s ease, background .15s ease, opacity .15s ease;
+}
+
+.socialLink svg{
+  width:20px;
+  height:20px;
+  fill: currentColor;
+}
+
+.socialLink:hover{
+  background: rgba(0,0,0,.06);
+  transform: translateY(-1px);
+}
+
+.socialLink:active{
+  transform: translateY(0px);
+  opacity:.85;
+}
+
+.socialLink:focus-visible{
+  outline: 2px solid rgba(0,0,0,.35);
+  outline-offset: 2px;
+}
+
+/* Mobile: stack nicely and keep social links aligned */
+@media (max-width: 520px){
+  .footerRow{
+    justify-content:center;
+    text-align:center;
+  }
+  .footerLocation{
+    flex-basis:100%;
+  }
+}

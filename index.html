@@ -1,73 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-
-    gtag("consent", "default", {
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        analytics_storage: "denied",
-        wait_for_update: 500,
-    });
-    gtag("set", "ads_data_redaction", true);
-    gtag("set", "developer_id.dZTNiMT", true);
-</script>
-
-<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/39c26b7e7e7525b2fd26e7e0395a1992/script.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XMEB5G4E97"></script>
-<script>
-  gtag('js', new Date());
-  gtag('config', 'G-XMEB5G4E97');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Pučišća Houses</title>
   <meta name="description" content="Experience luxury at The White House and The Glass House in Pučišća. Private pools, stunning sea views and modern elegance on the beautiful island of Brač, Croatia.">
-<!-- Google tag (gtag.js) -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-XMEB5G4E97');
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 
-<link rel="stylesheet" href="css/styles.css" />
+  <!-- Google Consent Mode (default denied) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '932280332696680');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=932280332696680&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      wait_for_update: 500
+    });
+    gtag("set", "ads_data_redaction", true);
+  </script>
 
-  <!-- Leaflet (for map on homepage if you want later) -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  
-<!-- calendar -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <!-- CookieYes (non-blocking) -->
+  <script id="cookieyes"
+    src="https://cdn-cookieyes.com/client_data/39c26b7e7e7525b2fd26e7e0395a1992/script.js"
+    defer></script>
 
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMEB5G4E97"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-XMEB5G4E97', { anonymize_ip: true });
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- calendar -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+
+  <!-- Load Meta Pixel ONLY after marketing consent -->
+  <script>
+    function loadMetaPixel() {
+      if (window.fbq) return;
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '932280332696680');
+      fbq('track', 'PageView');
+    }
+
+    // Hook this to CookieYes "marketing accepted" event/callback.
+    // You can implement this in one of two ways:
+    // (A) Use CookieYes dashboard: place Pixel as a "Marketing" script so it only runs after consent.
+    // (B) If CookieYes exposes a consent callback on your setup, call loadMetaPixel() from that callback.
+  </script>
 </head>
 
 <body>
